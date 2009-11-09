@@ -57,6 +57,16 @@ class ActiveRecordExtensionTest < ActiveSupport::TestCase
 #		teardown_db
 #	end
 
+	test "should get table status" do
+#		This is MySQL specific
+#		puts Thing.table_status
+	end
+
+	test "should get next_id" do
+#		This is MySQL specific
+#		puts Thing.next_id
+	end
+
 	test "should ignore articles in name" do
 		Thing.create(:name => "A Zebra")
 		Thing.create(:name => "The Apple")
