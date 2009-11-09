@@ -1,0 +1,8 @@
+
+Minor additions to ActiveRecord::Base
+
+	untaint_column
+
+	untaint_direction
+
+Nothing too special, but something that I've used often enough to create a plugin rather than continued duplication.
