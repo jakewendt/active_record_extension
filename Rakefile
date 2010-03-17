@@ -1,3 +1,7 @@
+# Use the updated rdoc gem rather than version
+# included with ruby.
+require 'rdoc'
+
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
@@ -5,7 +9,7 @@ require 'rake/rdoctask'
 desc 'Default: run unit tests.'
 task :default => :test
 
-desc 'Test the use_db plugin.'
+desc 'Test the active_record_extension plugin.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.pattern = 'test/**/*_test.rb'
