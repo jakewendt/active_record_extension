@@ -55,11 +55,17 @@ module ActiveRecordExtension
 		def validates_belongs_to_exists(*args)
 			options = args.extract_options!
 
+#			validates_each args do |record, attr, value|
+#				column = attr.to_s.sub(/_id$/,'')
+#				unless (column.camelcase.constantize.exists?(value))
+#					record.errors.add(attr,'is invalid') 
+#				end
+#			end
+
 			validates_each args do |record, attr, value|
 				column = attr.to_s.sub(/_id$/,'')
-				unless (column.camelcase.constantize.exists?(value))
-					record.errors.add(attr,'is invalid') 
-				end
+				attr = "#{column}_id".to_sym
+				record.errors.add(attr,'is invalid') if record.send(column).nil?
 			end
 
 		end
