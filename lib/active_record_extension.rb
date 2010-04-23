@@ -51,6 +51,19 @@ module ActiveRecordExtension
 		end
 		alias_method :next_id, :auto_increment
 
+
+		def validates_belongs_to_exists(*args)
+			options = args.extract_options!
+
+			validates_each args do |record, attr, value|
+				column = attr.to_s.sub(/_id$/,'')
+				unless (column.camelcase.constantize.exists?(value))
+					record.errors.add(attr,'is invalid') 
+				end
+			end
+
+		end
+
 	end
 
 end
